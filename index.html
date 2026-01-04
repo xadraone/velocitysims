@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<script>(function(w,r){w._rwq=r;w[r]=w[r]||function(){(w[r].q=w[r].q||[]).push(arguments)}})(window,'rewardful');</script>
-<script async src='https://r.wdfl.co/rw.js' data-rewardful='a3f2e7'></script>
+    <script>(function(w,r){w._rwq=r;w[r]=w[r]||function(){(w[r].q=w[r].q||[]).push(arguments)}})(window,'rewardful');</script>
+    <script async src='https://r.wdfl.co/rw.js' data-rewardful='a3f2e7'></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Velocity Simulators | Elite Simulation Store</title>
@@ -19,7 +19,7 @@
     <!-- Navegación -->
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-6">
         <div class="container mx-auto px-6 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
+            <div class="flex items-center space-x-2 cursor-pointer" onclick="window.scrollTo(0,0)">
                 <div class="w-10 h-10 bg-orange-600 rounded-lg flex items-center justify-center font-bold text-xl italic text-white shadow-lg shadow-orange-600/20">V</div>
                 <span class="text-xl font-bold tracking-tighter uppercase">Velocity <span class="text-orange-500">Sims</span></span>
             </div>
@@ -31,10 +31,10 @@
             </div>
 
             <div class="flex items-center space-x-6">
-                <!-- Link a contacto.html -->
-                <a href="contacto.html" class="bg-orange-600 hover:bg-orange-700 text-white px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all">
+                <!-- Link simulado para demostración -->
+                <button onclick="alert('Redirigiendo a contacto...')" class="bg-orange-600 hover:bg-orange-700 text-white px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all">
                     Contacto
-                </a>
+                </button>
             </div>
         </div>
     </nav>
@@ -46,7 +46,7 @@
                 <h1 class="text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight uppercase italic text-white whitespace-nowrap">
                     Desafía los <span class="text-orange-500">Límites</span>
                 </h1>
-                <p class="text-slate-400 text-lg mb-10 max-w-2xl">Con nuestros Sim Rigs de simulación profesional diseñados para los entusiastas más exigentes del mundo. Ingeniería y precisión para una inmersión absoluta</p>
+                <p class="text-slate-400 text-lg mb-10 max-w-2xl">Con nuestros Sim Rigs de simulación profesional diseñados para los entusiastas más exigentes del mundo. Ingeniería y precisión para una inmersión absoluta.</p>
                 <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0">
                     <a href="#productos" class="bg-orange-600 hover:bg-orange-700 text-white px-10 py-4 rounded-full font-bold transition-all inline-block shadow-lg shadow-orange-600/20 text-center">
                         Explorar Catálogo
@@ -55,6 +55,7 @@
             </div>
         </div>
         
+        <!-- Elemento decorativo de fondo -->
         <div class="absolute top-1/2 right-0 -translate-y-1/2 w-96 h-96 bg-orange-600/10 rounded-full blur-[120px] pointer-events-none"></div>
     </section>
 
@@ -67,7 +68,7 @@
                 <button onclick="switchTab('golf')" id="btn-golf" class="tab-btn flex-1 py-3 px-6 rounded-full text-xs font-black uppercase tracking-widest transition-all text-slate-400 hover:text-white">Golf</button>
             </div>
             <div class="bg-slate-900 rounded-[2.5rem] overflow-hidden border border-slate-800 shadow-2xl min-h-[600px]">
-                <div id="product-container" class="flex flex-col lg:flex-row opacity-100"></div>
+                <div id="product-container" class="flex flex-col lg:flex-row opacity-100 h-full"></div>
             </div>
         </div>
     </section>
@@ -78,21 +79,24 @@
     </footer>
 
     <script>
+        // Inicializar iconos
         lucide.createIcons();
 
-        // Rutas para imágenes locales en la carpeta 'img/'
+        // Datos de productos con imágenes de demostración (Unsplash)
         const products = {
             flight: { 
                 id: 'flight-01', 
                 title: "SkyMaster Pro", 
+                // Imagen de cockpit de avión
                 image: "img/FB_IMG_1758957529849.jpg", 
                 icon: "plane", 
                 subtitle: "Aviación Elite",
-                features: ["Yoke Force Feedback", "Paneles Grado Aeronautico", "Proyección 180°"]
+                features: ["Yoke Force Feedback", "Paneles Grado Aeronáutico", "Proyección 180°"]
             },
             racing: { 
                 id: 'racing-01', 
                 title: "Apex Predator GTR", 
+                // Imagen de simracing/cockpit
                 image: "img/racesim-02.png", 
                 icon: "trophy", 
                 subtitle: "Simulación Pro",
@@ -101,6 +105,7 @@
             golf: { 
                 id: 'golf-01', 
                 title: "Fairway Elite", 
+                // Imagen de campo de golf
                 image: "img/golf-sim-01.png", 
                 icon: "target", 
                 subtitle: "Golf Studio",
@@ -112,6 +117,7 @@
             const container = document.getElementById('product-container');
             const data = products[tabKey];
             
+            // Actualizar botones
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.remove('bg-orange-600', 'text-white');
                 btn.classList.add('text-slate-400');
@@ -120,31 +126,32 @@
             activeBtn.classList.add('bg-orange-600', 'text-white');
             activeBtn.classList.remove('text-slate-400');
 
+            // Transición de contenido
             container.style.opacity = '0';
             setTimeout(() => {
                 container.innerHTML = `
-                    <div class="lg:w-1/2 relative h-96 lg:h-[600px] overflow-hidden">
-                        <img src="${data.image}" class="w-full h-full object-cover" alt="[Imagen de ${data.title}]">
-                        <div class="absolute top-8 left-8 bg-slate-950/80 backdrop-blur-md p-4 rounded-2xl border border-white/10">
+                    <div class="lg:w-1/2 relative h-96 lg:h-auto overflow-hidden group">
+                        <img src="${data.image}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="[Imagen de ${data.title}]" onerror="this.src='https://placehold.co/800x600/1e293b/orange?text=Imagen+No+Disponible'">
+                        <div class="absolute top-8 left-8 bg-slate-950/80 backdrop-blur-md p-4 rounded-2xl border border-white/10 shadow-xl">
                             <i data-lucide="${data.icon}" class="w-6 h-6 text-orange-500"></i>
                         </div>
                     </div>
-                    <div class="lg:w-1/2 p-10 lg:p-20 flex flex-col justify-center text-left">
+                    <div class="lg:w-1/2 p-10 lg:p-20 flex flex-col justify-center text-left bg-slate-900/50">
                         <h3 class="text-orange-500 text-sm font-black uppercase tracking-[0.3em] mb-2">${data.subtitle}</h3>
-                        <h2 class="text-4xl lg:text-5xl font-black italic uppercase mb-8 text-white">${data.title}</h2>
+                        <h2 class="text-4xl lg:text-5xl font-black italic uppercase mb-8 text-white leading-none">${data.title}</h2>
                         <div class="grid grid-cols-1 gap-4 mb-12">
                             ${data.features.map(f => `
-                                <div class="flex items-start space-x-3">
-                                    <div class="mt-1 bg-orange-600/20 rounded p-1">
-                                        <i data-lucide="check" class="w-4 h-4 text-orange-500"></i>
+                                <div class="flex items-start space-x-3 group/item">
+                                    <div class="mt-1 bg-orange-600/20 rounded p-1 transition-colors group-hover/item:bg-orange-600">
+                                        <i data-lucide="check" class="w-4 h-4 text-orange-500 group-hover/item:text-white transition-colors"></i>
                                     </div>
-                                    <span class="text-slate-300 font-medium text-sm">${f}</span>
+                                    <span class="text-slate-300 font-medium text-sm group-hover/item:text-white transition-colors">${f}</span>
                                 </div>
                             `).join('')}
                         </div>
-                        <a href="contacto.html" class="bg-white text-slate-950 hover:bg-orange-500 hover:text-white py-5 rounded-2xl font-black uppercase tracking-widest transition-all flex items-center justify-center space-x-3 shadow-xl active:scale-95">
-                            <i data-lucide="mail" class="w-5 h-5"></i>
-                            <span>Solicitar Información</span>
+                        <a href="tienda.html" class="bg-white text-slate-950 hover:bg-orange-500 hover:text-white py-5 rounded-2xl font-black uppercase tracking-widest transition-all flex items-center justify-center space-x-3 shadow-xl active:scale-95 transform hover:-translate-y-1">
+                            <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                            <span>Ir a la tienda</span>
                         </a>
                     </div>
                 `;
@@ -153,19 +160,21 @@
             }, 200);
         }
 
+        // Efecto del Navbar al hacer scroll
         window.onscroll = function() {
             const nav = document.getElementById('navbar');
             if (nav) {
                 if (window.scrollY > 50) {
-                    nav.classList.add('bg-slate-950/90', 'backdrop-blur-md', 'py-4', 'border-b', 'border-slate-800');
+                    nav.classList.add('bg-slate-950/90', 'backdrop-blur-md', 'py-4', 'border-b', 'border-slate-800', 'shadow-lg');
                     nav.classList.remove('py-6');
                 } else {
-                    nav.classList.remove('bg-slate-950/90', 'backdrop-blur-md', 'py-4', 'border-b', 'border-slate-800');
+                    nav.classList.remove('bg-slate-950/90', 'backdrop-blur-md', 'py-4', 'border-b', 'border-slate-800', 'shadow-lg');
                     nav.classList.add('py-6');
                 }
             }
         };
 
+        // Cargar pestaña inicial
         switchTab('flight');
     </script>
 </body>
